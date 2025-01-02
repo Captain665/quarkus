@@ -1,4 +1,4 @@
-package org.acme.v1.Controllers;
+package org.acme.v1.controllers;
 
 public class EmployeeController {
 }
