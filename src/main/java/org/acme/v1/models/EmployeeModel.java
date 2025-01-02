@@ -34,9 +34,9 @@ public class EmployeeModel extends BaseModel {
 	@JsonManagedReference
 	private EmployeeSalary salary;
 	@Column(name = "active")
-	private Boolean isActive;
+	private Boolean active;
 	@Column(name = "new_user")
-	private Boolean isNewUser;
+	private Boolean newUser;
 
 	public EmployeeModel() {
 	}
@@ -135,14 +135,6 @@ public class EmployeeModel extends BaseModel {
 		this.asset = asset;
 	}
 
-	public List<AssetModel> getAssets() {
-		return asset;
-	}
-
-	public void setAssets(List<AssetModel> asset) {
-		this.asset = asset;
-	}
-
 	public EmployeeSalary getSalary() {
 		return salary;
 	}
@@ -152,19 +144,19 @@ public class EmployeeModel extends BaseModel {
 	}
 
 	public Boolean getActive() {
-		return isActive;
+		return active;
 	}
 
 	public void setActive(Boolean active) {
-		isActive = active;
+		this.active = active;
 	}
 
 	public Boolean getNewUser() {
-		return isNewUser;
+		return newUser;
 	}
 
 	public void setNewUser(Boolean newUser) {
-		isNewUser = newUser;
+		this.newUser = newUser;
 	}
 
 	@Override
@@ -178,8 +170,8 @@ public class EmployeeModel extends BaseModel {
 				", resignDate='" + resignDate + '\'' +
 				", role='" + role + '\'' +
 				", location='" + location + '\'' +
-				", isActive=" + isActive +
-				", isNewUser=" + isNewUser +
+				", active=" + active +
+				", newUser=" + newUser +
 				'}';
 	}
 }

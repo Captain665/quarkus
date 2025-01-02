@@ -16,7 +16,7 @@ public class CompanyResponseResource {
 	public String gstNo;
 	public String category;
 	public BigInteger numberOfEmployee;
-	public List<EmployeeModel> employeeDetails;
+	public List<EmployeeResponseResource> employeeDetails;
 
 	public CompanyResponseResource() {
 	}
@@ -104,11 +104,11 @@ public class CompanyResponseResource {
 		this.numberOfEmployee = numberOfEmployee;
 	}
 
-	public List<EmployeeModel> getEmployeeDetails() {
+	public List<EmployeeResponseResource> getEmployeeDetails() {
 		return employeeDetails;
 	}
 
-	public void setEmployeeDetails(List<EmployeeModel> employeeDetails) {
+	public void setEmployeeDetails(List<EmployeeResponseResource> employeeDetails) {
 		this.employeeDetails = employeeDetails;
 	}
 

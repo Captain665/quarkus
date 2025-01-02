@@ -7,6 +7,7 @@ import org.acme.v1.models.EmployeeModel;
 import org.acme.v1.repositories.CompanyRepository;
 import org.acme.v1.repositories.EmployeeRepository;
 import org.acme.v1.resources.CompanyResponseResource;
+import org.acme.v1.resources.EmployeeResponseResource;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -26,9 +27,9 @@ public class CompanyResourceHandler {
 		CompanyModel model = repository.findById(id);
 		if (model != null) {
 			CompanyResponseResource companyResponseResource = new CompanyResponseResource(model);
-			List<EmployeeModel> model1 = employeeRepository.findByCompanyId(model.getId());
-			companyResponseResource.setEmployeeDetails(model1);
-			companyResponseResource.setNumberOfEmployee(BigInteger.valueOf(1));
+			List<EmployeeModel> model1 = employeeRepository.findByCompanyId(model.getId()).stream().filter(EmployeeModel::getActive).toList();
+			companyResponseResource.setEmployeeDetails(model1.stream().map(EmployeeResponseResource::new).toList());
+			companyResponseResource.setNumberOfEmployee(BigInteger.valueOf(model1.size()));
 			return companyResponseResource;
 		}
 		return null;
