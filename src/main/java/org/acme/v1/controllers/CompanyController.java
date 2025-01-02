@@ -8,24 +8,26 @@ import org.acme.common.response.ApiSuccess;
 import org.acme.common.response.ErrorCode;
 import org.acme.v1.models.CompanyModel;
 import org.acme.v1.repositories.CompanyRepository;
+import org.acme.v1.resourceHandlers.CompanyResourceHandler;
+import org.acme.v1.resources.CompanyResponseResource;
 import org.jboss.resteasy.reactive.RestResponse;
 
 @Path("/v1/company")
 public class CompanyController {
 
 	@Inject
-	public CompanyRepository repository;
+	private CompanyResourceHandler resourceHandler;
 
 	@Path("/{id}/details")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public RestResponse<?> getDetails(@PathParam("id") Long id) {
 		System.out.println("Request id is " + id);
-		CompanyModel model = repository.findById(id);
-		if (model != null) {
-			System.out.println("response model " + model);
+		CompanyResponseResource responseResource = resourceHandler.getCompanyDetails(id);
+		if (responseResource != null) {
+			System.out.println("response resource " + responseResource);
 			return RestResponse.ResponseBuilder
-					.create(RestResponse.Status.OK, new ApiSuccess(model))
+					.create(RestResponse.Status.OK, new ApiSuccess(responseResource))
 					.type(MediaType.APPLICATION_JSON)
 					.build();
 		}
