@@ -92,4 +92,18 @@ public class EmployeeSalary extends BaseModel {
 	public void setEmployee(EmployeeModel employee) {
 		this.employee = employee;
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeeSalary{" +
+				"baseAmount=" + baseAmount +
+				", hra=" + hra +
+				", pf=" + pf +
+				", medical=" + medical +
+				", tax=" + tax +
+				", totalAmount=" + totalAmount +
+				", employee=" + employee +
+				", id=" + id +
+				'}';
+	}
 }
