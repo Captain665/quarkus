@@ -28,7 +28,7 @@ public class EmployeeController {
 	public RestResponse<?> create(EmployeeResource resource) {
 		logger.info(" requested json : " + resource);
 		EmployeeResource responseResource = resourceHandler.createOrUpdate(resource);
-		System.out.println(" response :" + responseResource);
+		logger.info(" response :" + responseResource);
 		if (responseResource != null) {
 			return RestResponse.ResponseBuilder
 					.create(RestResponse.Status.OK, responseResource)
