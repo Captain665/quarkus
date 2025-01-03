@@ -26,12 +26,9 @@ public class EmployeeRepository implements PanacheRepository<EmployeeModel> {
 
 	@Transactional
 	public EmployeeModel saveEmployeeDetails(EmployeeModel model) {
-		System.out.println("run here ....................................");
 		EmployeeModel modelInDb = findByMobile(model.getMobile());
 		if (modelInDb != null) {
-			System.out.println("run here 1 ....................................");
 			if (modelInDb.getAsset() != null) {
-				System.out.println("run here 2 ....................................");
 				modelInDb.getAsset().forEach(assetModel -> assetRepository.delete(assetModel));
 			}
 			model.setId(modelInDb.getId());
@@ -40,9 +37,6 @@ public class EmployeeRepository implements PanacheRepository<EmployeeModel> {
 			model.getAsset().forEach(assetModel -> assetModel.setEmployee(model));
 			model.setActive(modelInDb.getActive());
 			model.setNewUser(false);
-			System.out.println("final model is " + model);
-			System.out.println("final employee salary model is " + model.getSalary());
-			System.out.println("final employee asset model is " + model.getAsset());
 			return getEntityManager().merge(model);
 		}
 		model.getSalary().setEmployee(model);

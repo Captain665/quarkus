@@ -38,7 +38,6 @@ public class EmployeeResourceHandler {
 				.setSalary(calculateEmployeeSalary(resource.getSalaryStructure()))
 				.build();
 		EmployeeResource responseResource = new EmployeeResource(employeeRepository.saveEmployeeDetails(employeeModel));
-		System.out.println(" response resource " + responseResource);
 		responseResource.setCompanyDetails(companyModel);
 		return responseResource;
 	}
