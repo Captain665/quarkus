@@ -170,8 +170,11 @@ public class EmployeeModel extends BaseModel {
 				", resignDate='" + resignDate + '\'' +
 				", role='" + role + '\'' +
 				", location='" + location + '\'' +
-				", active=" + active +
+//				", asset=" + asset +
+//				", salary=" + salary +
+//				", active=" + active +
 				", newUser=" + newUser +
+				", id=" + id +
 				'}';
 	}
 }
